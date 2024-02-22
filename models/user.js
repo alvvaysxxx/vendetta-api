@@ -53,6 +53,7 @@ const User = new Schema({
   },
   lastspin: {
     type: Date,
+    default: new Date(0),
   },
 });
 
