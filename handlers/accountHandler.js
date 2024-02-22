@@ -9,9 +9,8 @@ mongoose.connect(
 class AccountHandler {
   async register(req, res) {
     try {
-      const { token, username, friendCode, tgname, tgusername } = req.body;
-      const chatid = jwt.verify(token, "urionzzz");
-      const candidate = await User.findOne({ chatid: chatid.chatid });
+      const { username, friendCode, tgname, tgusername, chatid } = req.body;
+      const candidate = await User.findOne({ tgusername });
 
       if (candidate) {
         return res.status(401).json({ authenticated: false });
@@ -19,7 +18,7 @@ class AccountHandler {
 
       const user = new User({
         username,
-        chatid: chatid,
+        chatid,
         tgname,
         friendCode,
         tgusername,
@@ -39,6 +38,8 @@ class AccountHandler {
         res
           .status(200)
           .json({ error: false, token: jwt.sign(username, "urionzzz") });
+      } else {
+        res.status(201).json({ error: true });
       }
     } catch (err) {
       console.error(err);
