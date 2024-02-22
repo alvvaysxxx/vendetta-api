@@ -7,7 +7,7 @@ async function authentication(req, res, next) {
     const token = req.headers.authorization;
     const decodedToken = jwt.decode(token, "urionzzz");
     const currentUser = await User.findOne({
-      chatid: decodedToken,
+      username: decodedToken,
     });
     req.user = currentUser;
     next();

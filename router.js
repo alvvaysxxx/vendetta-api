@@ -21,7 +21,8 @@ const itemsHandler = new ItemsHandler();
 router.post("/account/register", (req, res) => {
   accountHandler.register(req, res);
 });
-router.get("/account/check", auth, (req, res) => {
+
+router.post("/account/check", (req, res) => {
   accountHandler.checkAccount(req, res);
 });
 router.get("/account/profile", auth, (req, res) => {

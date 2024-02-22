@@ -33,11 +33,12 @@ class AccountHandler {
   }
   async checkAccount(req, res) {
     try {
-      const { user } = req;
+      const { username } = req.body;
+      let user = await User.findOne({ tgusername: username });
       if (user) {
-        return res.status(200).json({ exists: true });
-      } else {
-        return res.status(200).json({ exists: false });
+        res
+          .status(200)
+          .json({ error: false, token: jwt.sign(username, "urionzzz") });
       }
     } catch (err) {
       console.error(err);
