@@ -15,6 +15,8 @@ const ShopHandler = require("./handlers/shopHandler");
 const shopHandler = new ShopHandler();
 const ItemsHandler = require("./handlers/itemsHandler");
 const itemsHandler = new ItemsHandler();
+const MarriageHandler = require("./handlers/marriageHandler");
+const marriageHandler = new MarriageHandler();
 
 /* account */
 
@@ -99,6 +101,12 @@ router.get("/items/spin", auth, (req, res) => {
 
 router.get("/items/tillnextspin", auth, (req, res) => {
   itemsHandler.getTimeTillNextSpin(req, res);
+});
+
+/* marriges */
+
+router.post("/marriage/marry", auth, (req, res) => {
+  marriageHandler.marry(req, res);
 });
 
 module.exports = router;

@@ -55,6 +55,10 @@ const User = new Schema({
     type: Date,
     default: new Date(0),
   },
+  marriedWith: {
+    type: String,
+    default: "",
+  },
 });
 
 module.exports = model("user", User);
