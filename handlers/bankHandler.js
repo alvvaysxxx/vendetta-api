@@ -70,8 +70,17 @@ class BankHandler {
       await user.save();
 
       await bot.sendMessage(
+        user.chatid,
+        `🔔 <b>Уведомление!</b>\nВы отправили ${amount} Vendettix пользователю <a href = "https://t.me./${receiver.tgusername}">${receiver.username}</a>`,
+        {
+          parse_mode: "HTML",
+          disable_web_page_preview: true,
+        }
+      );
+
+      await bot.sendMessage(
         receiver.chatid,
-        `🔔 <b>Уведомление!</b>\nПользователь <a href = "https://t.me/${user.tgusername}">${user.username}</a> отправил вам ${amount} vendettix. Проверить свой баланс вы сможете <a href = "https://c2kq4hl1-5173.euw.devtunnels.ms/bank">на сайте</a>.`,
+        `🔔 <b>Уведомление!</b>\nПользователь <a href = "https://t.me/${user.tgusername}">${user.username}</a> отправил вам ${amount} vendettix.`,
         {
           parse_mode: "HTML",
           disable_web_page_preview: true,

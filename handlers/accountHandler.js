@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
+const bot = require("../bot");
 
 mongoose.connect(
   "mongodb+srv://urionzzz:79464241@cluster0.o5sciwm.mongodb.net/?retryWrites=true&w=majority"
@@ -24,6 +25,13 @@ class AccountHandler {
         tgusername,
       });
       await user.save();
+      await bot.sendMessage(
+        chatid,
+        `<b>✅ Вы успешно создали аккаунт на нашей платформе!\nТеперь, у вас открыты все возможности в приложении</b>`,
+        {
+          parse_mode: "HTML",
+        }
+      );
       return res.status(200).json({ authenticated: true });
     } catch (err) {
       console.error(err);
