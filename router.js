@@ -109,4 +109,16 @@ router.post("/marriage/marry", auth, (req, res) => {
   marriageHandler.marry(req, res);
 });
 
+router.get("/marriage/unmarry", auth, (req, res) => {
+  marriageHandler.unmarry(req, res);
+});
+
+router.get("/marriage/marriages", (req, res) => {
+  marriageHandler.marriages(req, res);
+});
+
+router.get("/marriage/myMarriage", auth, (req, res) => {
+  marriageHandler.myMarriage(req, res);
+});
+
 module.exports = router;
