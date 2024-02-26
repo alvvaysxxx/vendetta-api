@@ -35,6 +35,10 @@ router.post("/account/change", auth, (req, res) => {
   accountHandler.changeProfile(req, res);
 });
 
+router.post("/account/search", (req, res) => {
+  accountHandler.search(req, res);
+});
+
 /* tasks */
 
 router.post("/tasks/create", auth, (req, res) => {

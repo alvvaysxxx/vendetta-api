@@ -87,6 +87,19 @@ class AccountHandler {
       res.status(500).json({ error: true });
     }
   }
+
+  async search(req, res) {
+    try {
+      let { query } = req.body;
+      const regex = new RegExp(query, "i"); // 'i' означает, что поиск будет регистронезависимым
+      const users = await User.find({ username: regex });
+      res.status(200).json({ error: false, users });
+    } catch (err) {
+      res
+        .status(500)
+        .json({ error: true, message: "Произошла ошибка на стороне сервера" });
+    }
+  }
 }
 
 module.exports = AccountHandler;
