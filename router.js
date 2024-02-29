@@ -39,7 +39,7 @@ router.post("/account/search", (req, res) => {
   accountHandler.search(req, res);
 });
 
-router.get("/account/profile/user", (req, res) => {
+router.post("/account/profile/user", (req, res) => {
   accountHandler.profile(req, res);
 });
 
