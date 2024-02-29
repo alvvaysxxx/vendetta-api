@@ -39,6 +39,10 @@ router.post("/account/search", (req, res) => {
   accountHandler.search(req, res);
 });
 
+router.get("/account/profile/user", (req, res) => {
+  accountHandler.profile(req, res);
+});
+
 /* tasks */
 
 router.post("/tasks/create", auth, (req, res) => {

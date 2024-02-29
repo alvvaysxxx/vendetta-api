@@ -100,6 +100,27 @@ class AccountHandler {
         .json({ error: true, message: "Произошла ошибка на стороне сервера" });
     }
   }
+
+  async profile(req, res) {
+    try {
+      const { username } = req.body;
+
+      let result = await User.findOne({ username });
+
+      if (!result) {
+        return res
+          .status(500)
+          .json({ error: true, message: "Пользователь не найден!" });
+      }
+      res.status(200).json({ error: false, result });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({
+        error: true,
+        message: "Произошла ошибка при поиске пользователя",
+      });
+    }
+  }
 }
 
 module.exports = AccountHandler;
