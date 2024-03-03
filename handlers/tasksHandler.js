@@ -112,7 +112,7 @@ class TasksHandler {
 
         const result = await client.invoke(
           new Api.premium.GetBoostsList({
-            peer: "-1001812423876",
+            peer: "-1002117822751",
             offset: "0",
           })
         );

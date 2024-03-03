@@ -4,6 +4,7 @@ const jwt = require("jsonwebtoken");
 const generateProfileImage = require("./tghandlers/profile_image.js");
 const User = require("./models/user.js");
 const Gallery = require("./models/gallery.js");
+const compression = require("compression");
 
 const router = require("./router.js");
 
@@ -21,6 +22,7 @@ const API_KEY_BOT = "6855579648:AAF29wJqMxl_QCdy9RCjesGojgSduJxJrLY";
 
 const app = express();
 app.use(express.json());
+app.use(compression());
 app.use(function (req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST");
