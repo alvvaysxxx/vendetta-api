@@ -9,7 +9,7 @@ const { StringSession } = require("telegram/sessions");
 const { Api } = require("telegram/tl");
 const input = require("input");
 
-const token = "6855579648:AAF29wJqMxl_QCdy9RCjesGojgSduJxJrLY";
+const token = "7033176556:AAFjD9Vns3shJ0hve7znsDiVIl3oEU5JQtI";
 
 const apiId = 20436441;
 const apiHash = "a3c4c7df5fbf89439b9a01c2d1de524c";
