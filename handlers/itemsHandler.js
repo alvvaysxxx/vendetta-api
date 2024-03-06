@@ -15,6 +15,24 @@ function isWeekAgo(date) {
 }
 
 class ItemsHandler {
+  async IncreaseLevel(req, res) {
+    try {
+      let { user } = req;
+      if (!(user.inventory.nextLevel > 0)) {
+        return res.status(204).json({ error: true });
+      }
+      user.xp += 1000;
+      user.inventory.nextLevel -= 1;
+      await user.save();
+      await user.updateOne({
+        $set: { inventory: user.inventory },
+      });
+    } catch (err) {
+      res.status(200).json({ error: true });
+      console.error(err);
+    }
+  }
+
   async sendAnonymousMsg(req, res) {
     try {
       let { user } = req;

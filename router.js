@@ -103,6 +103,10 @@ router.post("/items/sendAnonMsg", auth, (req, res) => {
   itemsHandler.sendAnonymousMsg(req, res);
 });
 
+router.get("/items/nextLevel", auth, (req, res) => {
+  itemsHandler.IncreaseLevel(req, res);
+});
+
 router.get("/items/spin", auth, (req, res) => {
   itemsHandler.spin(req, res);
 });
