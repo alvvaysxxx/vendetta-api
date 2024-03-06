@@ -27,6 +27,7 @@ class ItemsHandler {
       await user.updateOne({
         $set: { inventory: user.inventory },
       });
+      res.status(200).json({ error: false });
     } catch (err) {
       res.status(200).json({ error: true });
       console.error(err);
